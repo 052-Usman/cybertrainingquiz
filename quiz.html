@@ -11,53 +11,47 @@
       margin: 0;
       padding: 0;
       background: #f9fafb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .start-screen {
+      text-align: center;
+      padding: 2rem;
+    }
+    .start-button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+    .start-button:hover {
+      background-color: #2563eb;
+    }
+    #quiz-container {
+      display: none;
+      max-width: 700px;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <!-- wp:group {"tagName":"main","metadata":{"name":"Main"},"style":{"spacing":{"blockGap":"0","margin":{"top":"0"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group" style="margin-top:0">
-  <!-- wp:group {"style":{"spacing":{"padding":{"top":"20px","right":"20px","bottom":"20px","left":"20px"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
-  <div class="wp-block-group" style="padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px">
 
-    <!-- Header Section -->
-    <!-- wp:cover {"url":"https://gamifiedcybertraining.wordpress.com/wp-content/uploads/2025/07/gamified-cyber-security-2.jpg?w=800","id":31,"dimRatio":60,"overlayColor":"custom","customOverlayColor":"#565682","sizeSlug":"large","align":"full","style":{"color":{"background":"linear-gradient(135deg, #1e3a8a, #3b82f6)"}}} -->
-    <div class="wp-block-cover alignfull has-background" style="background:linear-gradient(135deg, #1e3a8a, #3b82f6)">
-      <span aria-hidden="true" class="wp-block-cover__background has-custom-background-color has-background-dim-60 has-background-dim" style="background-color:#565682"></span>
-      <img class="wp-block-cover__image-background wp-image-31 size-large" alt="Quiz Header" src="https://gamifiedcybertraining.wordpress.com/wp-content/uploads/2025/07/gamified-cyber-security-2.jpg?w=800" data-object-fit="cover"/>
-      <div class="wp-block-cover__inner-container">
-        <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"40px","bottom":"40px"}}}} -->
-        <div class="wp-block-group alignwide" style="padding-top:40px;padding-bottom:40px">
-          <!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontSize":"40px","fontWeight":"700"},"color":{"text":"#ffffff"}}} -->
-          <h1 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff;font-size:40px;font-weight:700">Cybersecurity Challenge Arena</h1>
-          <!-- /wp:heading -->
-          <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"18px"},"color":{"text":"#ffffff"}}} -->
-          <p class="has-text-align-center has-text-color" style="color:#ffffff;font-size:18px">Dive into our interactive cybersecurity quiz game! Race against the clock, earn points, and climb the leaderboard to become a cyber hero.</p>
-          <!-- /wp:paragraph -->
-          <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-          <div class="wp-block-buttons">
-            <!-- wp:button {"style":{"color":{"background":"#3b82f6","text":"#ffffff"},"border":{"radius":"4px"},"spacing":{"padding":{"top":"12px","right":"24px","bottom":"12px","left":"24px"}}}} -->
-            <div class="wp-block-button"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="#quiz-section" style="border-radius:4px;color:#ffffff;background-color:#3b82f6;padding-top:12px;padding-right:24px;padding-bottom:12px;padding-left:24px">Start Challenge</a></div>
-            <!-- /wp:button -->
-          </div>
-          <!-- /wp:buttons -->
-        </div>
-        <!-- /wp:group -->
-      </div>
+    <!-- Start Screen -->
+    <div class="start-screen" id="start-screen">
+      <h1>Cybersecurity Quiz</h1>
+      <p>Test your knowledge of cybersecurity with this interactive quiz!</p>
+      <button class="start-button" onclick="startQuiz()">Start Quiz</button>
     </div>
-    <!-- /wp:cover -->
 
     <!-- Quiz Game Section -->
-    <!-- wp:group {"style":{"spacing":{"padding":{"top":"40px","right":"40px","bottom":"40px","left":"40px"},"margin":{"top":"20px","bottom":"20px"}},"color":{"background":"#ffffff"},"border":{"radius":"8px"}},"layout":{"type":"constrained"}} -->
-    <div class="wp-block-group has-background" style="border-radius:8px;background-color:#ffffff;margin-top:20px;margin-bottom:20px;padding-top:40px;padding-right:40px;padding-bottom:40px;padding-left:40px" id="quiz-section">
-      <!-- wp:heading {"textAlign":"center","style":{"typography":{"fontSize":"28px"},"spacing":{"margin":{"bottom":"20px"}}}} -->
-      <h2 class="wp-block-heading has-text-align-center" style="font-size:28px;margin-bottom:20px">Cybersecurity Challenge Arena</h2>
-      <!-- /wp:heading -->
-      <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"16px"},"spacing":{"margin":{"bottom":"20px"}}}} -->
-      <p class="has-text-align-center" style="font-size:16px;margin-bottom:20px">Test your cybersecurity skills in this fast-paced quiz game. Answer correctly before time runs out to maximize your score!</p>
-      <!-- /wp:paragraph -->
-      <!-- wp:html -->
-      <div id="quiz-container" style="max-width:700px;margin:0 auto;padding:20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);background-color:#f9fafb;">
+    <div id="quiz-container" style="display:none;max-width:700px;margin:20px;padding:20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);background-color:#ffffff;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
           <div id="score" style="font-size:18px;font-weight:600;color:#374151;">Score: <span id="score-value">0</span></div>
           <div id="timer" style="font-size:18px;font-weight:600;color:#374151;">Time: <span id="timer-value">15</span>s</div>
@@ -72,21 +66,37 @@
         <div id="next-button" style="text-align:center;">
           <button onclick="nextQuestion()" style="background-color:#3b82f6;color:#ffffff;padding:12px 24px;border:none;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;display:none;opacity:0;transition:opacity 0.3s ease;">Next Challenge</button>
         </div>
-        <div id="results" style="display:none;text-align:center;">
-          <h3 style="font-size:24px;font-weight:600;color:#1f2937;margin-bottom:20px;">Challenge Complete!</h3>
-          <p id="results-text" style="font-size:18px;color:#374151;margin-bottom:20px;"></p>
-          <div style="margin-bottom:20px;">
-            <input id="player-name" type="text" placeholder="Enter your name" style="padding:12px;border:1px solid #d1d5db;border-radius:4px;font-size:16px;margin-right:10px;width:200px;">
-            <button onclick="saveScore()" style="background-color:#10b981;color:#ffffff;padding:12px 24px;border:none;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;">Save Score</button>
+        <div id="results" style="display:none;text-align:center;padding:20px;">
+          <div style="background:white;border-radius:8px;padding:30px;box-shadow:0 4px 12px rgba(0,0,0,0.1);max-width:500px;margin:0 auto;">
+            <h3 style="font-size:28px;font-weight:600;color:#1f2937;margin-bottom:15px;">Quiz Complete! 🎉</h3>
+            <div style="font-size:48px;font-weight:bold;color:#3b82f6;margin:20px 0;">
+              <span id="final-score">0</span>/<span id="max-score">0</span>
+            </div>
+            <p id="results-text" style="font-size:18px;color:#4b5563;margin-bottom:25px;line-height:1.6;"></p>
+            
+            <div style="margin:25px 0;">
+              <input id="player-name" type="text" placeholder="Enter your name" style="padding:12px 16px;border:2px solid #e5e7eb;border-radius:6px;font-size:16px;width:250px;max-width:100%;margin-bottom:15px;display:block;margin-left:auto;margin-right:auto;">
+              <button onclick="saveScore()" style="background-color:#10b981;color:white;padding:12px 30px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;transition:background-color 0.2s;margin:10px 5px;">
+                Save Score
+              </button>
+            </div>
+            
+            <div id="leaderboard" style="margin:30px 0;padding:20px;background:#f9fafb;border-radius:8px;">
+              <h4 style="font-size:20px;font-weight:600;color:#1f2937;margin-bottom:15px;">🏆 Leaderboard</h4>
+              <ul id="leaderboard-list" style="list-style:none;padding:0;margin:0;text-align:left;"></ul>
+            </div>
+            
+            <div style="margin-top:30px;">
+              <button onclick="restartQuiz()" style="background-color:#3b82f6;color:white;padding:12px 30px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;transition:background-color 0.2s;margin:5px;">
+                Play Again
+              </button>
+              <button onclick="location.reload()" style="background-color:#f3f4f6;color:#4b5563;padding:12px 30px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;transition:background-color 0.2s;margin:5px;">
+                Back to Start
+              </button>
+            </div>
           </div>
-          <div id="leaderboard" style="margin-bottom:20px;">
-            <h4 style="font-size:20px;font-weight:600;color:#1f2937;margin-bottom:10px;">Leaderboard</h4>
-            <ul id="leaderboard-list" style="list-style:none;padding:0;font-size:16px;color:#374151;"></ul>
-          </div>
-          <button onclick="restartQuiz()" style="background-color:#3b82f6;color:#ffffff;padding:12px 24px;border:none;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;">Restart Challenge</button>
         </div>
       </div>
-      <div id="quiz-script-container"></div>
       <script type="text/javascript">
         // Quiz data and state
         const questions = [
@@ -196,12 +206,32 @@
                 clearInterval(timerInterval);
                 requiredElements.quizContainer.style.display = 'none';
                 requiredElements.resultsEl.style.display = 'block';
+                
+                // Update final score display
+                const finalScoreEl = document.getElementById('final-score');
+                const maxScoreEl = document.getElementById('max-score');
                 const resultsTextEl = document.getElementById('results-text');
+                
+                const maxScore = totalQuestions * 15;
+                const percentage = Math.round((score / maxScore) * 100);
+                
+                if (finalScoreEl) finalScoreEl.textContent = score;
+                if (maxScoreEl) maxScoreEl.textContent = maxScore;
+                
                 if (resultsTextEl) {
-                  resultsTextEl.innerText = `Your Score: ${score}/${totalQuestions * 15} (${Math.round((score / (totalQuestions * 15)) * 100)}%)`;
-                } else {
-                  console.error('DOM element not found: results-text');
+                  let message = `You answered ${Math.round(score/15)} out of ${totalQuestions} questions correctly. `;
+                  if (percentage >= 80) {
+                    message += 'Excellent work! You\'re a cybersecurity expert! 🎯';
+                  } else if (percentage >= 60) {
+                    message += 'Good job! Keep learning to improve your score! 👍';
+                  } else {
+                    message += 'Keep practicing to improve your cybersecurity knowledge! 💪';
+                  }
+                  resultsTextEl.innerHTML = message;
                 }
+                
+                // Scroll to results
+                requiredElements.resultsEl.scrollIntoView({ behavior: 'smooth' });
                 updateLeaderboard();
                 return;
               }
@@ -447,9 +477,14 @@
               }
             });
 
-        // Initialize quiz when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        // Function to start the quiz
+        function startQuiz() {
             try {
+                // Hide start screen and show quiz
+                document.getElementById('start-screen').style.display = 'none';
+                const quizContainer = document.getElementById('quiz-container');
+                quizContainer.style.display = 'block';
+                
                 // Load leaderboard from localStorage
                 const savedLeaderboard = localStorage.getItem('leaderboard');
                 leaderboard = savedLeaderboard ? JSON.parse(savedLeaderboard) : [];
@@ -458,60 +493,20 @@
                 document.getElementById('total-questions').textContent = totalQuestions;
                 document.getElementById('question-number').textContent = '1';
                 
-                // Make sure the quiz container is visible
-                const quizContainer = document.getElementById('quiz-container');
-                if (quizContainer) {
-                    quizContainer.style.display = 'block';
-                }
-                
                 // Start the quiz
                 loadQuestion();
                 updateLeaderboard();
                 
             } catch (error) {
-                console.error('Error initializing quiz:', error);
+                console.error('Error starting quiz:', error);
                 const container = document.getElementById('quiz-container');
                 if (container) {
                     container.innerHTML = '<div style="color: red; padding: 20px; text-align: center;">Error loading quiz. Please refresh the page to try again.</div>';
                 }
             }
-        });
+        }
       </script>
       <!-- /wp:html -->
     </div>
-    <!-- /wp:group -->
-
-    <!-- Call-to-Action Section -->
-    <!-- wp:cover {"url":"https://gamifiedcybertraining.wordpress.com/wp-content/uploads/2025/07/standard-quality-control-concept-m.jpg?w=1024","id":33,"dimRatio":70,"overlayColor":"custom","customOverlayColor":"#393840","focalPoint":{"x":0.5,"y":0},"minHeight":460,"minHeightUnit":"px","sizeSlug":"large","align":"full","style":{"color":{"background":"linear-gradient(135deg, #1e3a8a, #3b82f6)"}}} -->
-    <div class="wp-block-cover alignfull has-background" style="background:linear-gradient(135deg, #1e3a8a, #3b82f6);min-height:460px">
-      <span aria-hidden="true" class="wp-block-cover__background has-custom-background-color has-background-dim-70 has-background-dim" style="background-color:#393840"></span>
-      <img class="wp-block-cover__image-background wp-image-33 size-large" alt="CTA Background" src="https://gamifiedcybertraining.wordpress.com/wp-content/uploads/2025/07/standard-quality-control-concept-m.jpg?w=1024" style="object-position:50% 0%" data-object-fit="cover" data-object-position="50% 0%"/>
-      <div class="wp-block-cover__inner-container">
-        <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"40px","bottom":"40px"}}}} -->
-        <div class="wp-block-group alignwide" style="padding-top:40px;padding-bottom:40px">
-          <!-- wp:heading {"textAlign":"center","style":{"typography":{"fontSize":"32px"},"color":{"text":"#ffffff"}}} -->
-          <h2 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff;font-size:32px">Continue Your Cybersecurity Journey</h2>
-          <!-- /wp:heading -->
-          <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"16px"},"color":{"text":"#ffffff"}}} -->
-          <p class="has-text-align-center has-text-color" style="color:#ffffff;font-size:16px">Explore more training modules to enhance your cybersecurity skills.</p>
-          <!-- /wp:paragraph -->
-          <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-          <div class="wp-block-buttons">
-            <!-- wp:button {"style":{"color":{"background":"#3b82f6","text":"#ffffff"},"border":{"radius":"4px"},"spacing":{"padding":{"top":"12px","right":"24px","bottom":"12px","left":"24px"}}}} -->
-            <div class="wp-block-button"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="/start-training" style="border-radius:4px;color:#ffffff;background-color:#3b82f6;padding-top:12px;padding-right:24px;padding-bottom:12px;padding-left:24px">Explore More</a></div>
-            <!-- /wp:button -->
-          </div>
-          <!-- /wp:buttons -->
-        </div>
-        <!-- /wp:group -->
-      </div>
-    </div>
-    <!-- /wp:cover -->
-
-    <!-- wp:template-part {"slug":"footer","theme":"pub/retrospect"} /-->
-  </div>
-  <!-- /wp:group -->
-</main>
-<!-- /wp:group -->
 </body>
 </html>
