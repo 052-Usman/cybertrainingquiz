@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+    }
+  </style>
+</head>
+<body>
+  <!-- wp:group {"tagName":"main","metadata":{"name":"Main"},"style":{"spacing":{"blockGap":"0","margin":{"top":"0"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:0">
+  <!-- wp:group {"style":{"spacing":{"padding":{"top":"20px","right":"20px","bottom":"20px","left":"20px"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
+  <div class="wp-block-group" style="padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px">
+
+    <!-- Header Section -->
+    <!-- wp:cover {"url":"https://gamifiedcybertraining.wordpress.com/wp-content/uploads/2025/07/gamified-cyber-security-2.jpg?w=800","id":31,"dimRatio":60,"overlayColor":"custom","customOverlayColor":"#565682","sizeSlug":"large","align":"full","style":{"color":{"background":"linear-gradient(135deg, #1e3a8a, #3b82f6)"}}} -->
+    <div class="wp-block-cover alignfull has-background" style="background:linear-gradient(135deg, #1e3a8a, #3b82f6)">
+      <span aria-hidden="true" class="wp-block-cover__background has-custom-background-color has-background-dim-60 has-background-dim" style="background-color:#565682"></span>
+      <img class="wp-block-cover__image-background wp-image-31 size-large" alt="Quiz Header" src="https://gamifiedcybertraining.wordpress.com/wp-content/uploads/2025/07/gamified-cyber-security-2.jpg?w=800" data-object-fit="cover"/>
+      <div class="wp-block-cover__inner-container">
+        <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"40px","bottom":"40px"}}}} -->
+        <div class="wp-block-group alignwide" style="padding-top:40px;padding-bottom:40px">
+          <!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontSize":"40px","fontWeight":"700"},"color":{"text":"#ffffff"}}} -->
+          <h1 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff;font-size:40px;font-weight:700">Cybersecurity Challenge Arena</h1>
+          <!-- /wp:heading -->
+          <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"18px"},"color":{"text":"#ffffff"}}} -->
+          <p class="has-text-align-center has-text-color" style="color:#ffffff;font-size:18px">Dive into our interactive cybersecurity quiz game! Race against the clock, earn points, and climb the leaderboard to become a cyber hero.</p>
+          <!-- /wp:paragraph -->
+          <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+          <div class="wp-block-buttons">
+            <!-- wp:button {"style":{"color":{"background":"#3b82f6","text":"#ffffff"},"border":{"radius":"4px"},"spacing":{"padding":{"top":"12px","right":"24px","bottom":"12px","left":"24px"}}}} -->
+            <div class="wp-block-button"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="#quiz-section" style="border-radius:4px;color:#ffffff;background-color:#3b82f6;padding-top:12px;padding-right:24px;padding-bottom:12px;padding-left:24px">Start Challenge</a></div>
+            <!-- /wp:button -->
+          </div>
+          <!-- /wp:buttons -->
+        </div>
+        <!-- /wp:group -->
+      </div>
+    </div>
+    <!-- /wp:cover -->
+
+    <!-- Quiz Game Section -->
+    <!-- wp:group {"style":{"spacing":{"padding":{"top":"40px","right":"40px","bottom":"40px","left":"40px"},"margin":{"top":"20px","bottom":"20px"}},"color":{"background":"#ffffff"},"border":{"radius":"8px"}},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group has-background" style="border-radius:8px;background-color:#ffffff;margin-top:20px;margin-bottom:20px;padding-top:40px;padding-right:40px;padding-bottom:40px;padding-left:40px" id="quiz-section">
+      <!-- wp:heading {"textAlign":"center","style":{"typography":{"fontSize":"28px"},"spacing":{"margin":{"bottom":"20px"}}}} -->
+      <h2 class="wp-block-heading has-text-align-center" style="font-size:28px;margin-bottom:20px">Cybersecurity Challenge Arena</h2>
+      <!-- /wp:heading -->
+      <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"16px"},"spacing":{"margin":{"bottom":"20px"}}}} -->
+      <p class="has-text-align-center" style="font-size:16px;margin-bottom:20px">Test your cybersecurity skills in this fast-paced quiz game. Answer correctly before time runs out to maximize your score!</p>
+      <!-- /wp:paragraph -->
+      <!-- wp:html -->
+      <div id="quiz-container" style="max-width:700px;margin:0 auto;padding:20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);background-color:#f9fafb;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <div id="score" style="font-size:18px;font-weight:600;color:#374151;">Score: <span id="score-value">0</span></div>
+          <div id="timer" style="font-size:18px;font-weight:600;color:#374151;">Time: <span id="timer-value">15</span>s</div>
+        </div>
+        <div id="progress" style="font-size:16px;margin-bottom:20px;text-align:center;">Question <span id="question-number">1</span> of <span id="total-questions"></span></div>
+        <div id="progress-bar" style="width:100%;height:10px;background-color:#e5e7eb;border-radius:5px;overflow:hidden;margin-bottom:20px;">
+          <div id="progress-fill" style="width:0%;height:100%;background-color:#3b82f6;transition:width 0.3s ease;"></div>
+        </div>
+        <div id="question" style="font-size:20px;font-weight:600;color:#1f2937;margin-bottom:20px;text-align:center;opacity:0;transition:opacity 0.5s ease;"></div>
+        <div id="options" style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:20px;"></div>
+        <div id="feedback" style="font-size:16px;text-align:center;color:#374151;margin-bottom:20px;"></div>
+        <div id="next-button" style="text-align:center;">
+          <button onclick="nextQuestion()" style="background-color:#3b82f6;color:#ffffff;padding:12px 24px;border:none;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;display:none;opacity:0;transition:opacity 0.3s ease;">Next Challenge</button>
+        </div>
+        <div id="results" style="display:none;text-align:center;">
+          <h3 style="font-size:24px;font-weight:600;color:#1f2937;margin-bottom:20px;">Challenge Complete!</h3>
+          <p id="results-text" style="font-size:18px;color:#374151;margin-bottom:20px;"></p>
+          <div style="margin-bottom:20px;">
+            <input id="player-name" type="text" placeholder="Enter your name" style="padding:12px;border:1px solid #d1d5db;border-radius:4px;font-size:16px;margin-right:10px;width:200px;">
+            <button onclick="saveScore()" style="background-color:#10b981;color:#ffffff;padding:12px 24px;border:none;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;">Save Score</button>
+          </div>
+          <div id="leaderboard" style="margin-bottom:20px;">
+            <h4 style="font-size:20px;font-weight:600;color:#1f2937;margin-bottom:10px;">Leaderboard</h4>
+            <ul id="leaderboard-list" style="list-style:none;padding:0;font-size:16px;color:#374151;"></ul>
+          </div>
+          <button onclick="restartQuiz()" style="background-color:#3b82f6;color:#ffffff;padding:12px 24px;border:none;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;">Restart Challenge</button>
+        </div>
+      </div>
+      <div id="quiz-script-container"></div>
+      <script type="text/javascript">
+        // Quiz data and state
+        const questions = [
+          {
+            question: "What is phishing?",
+            options: ["A method to encrypt data", "An attempt to trick users into revealing sensitive information", "A type of firewall protection", "A secure email protocol"],
+            correct: 1,
+            feedback: "Phishing is a cyberattack where attackers impersonate trusted entities to steal sensitive information like passwords or credit card details."
+          },
+          {
+            question: "What makes a strong password?",
+            options: ["Short and simple words", "A mix of letters, numbers, and symbols", "Your name or birthdate", "Common words like 'password'"],
+            correct: 1,
+            feedback: "A strong password combines uppercase and lowercase letters, numbers, and symbols, and avoids easily guessable information."
+          },
+          {
+            question: "What is malware?",
+            options: ["Software that protects your computer", "Malicious software designed to harm or exploit devices", "A type of antivirus program", "A secure file format"],
+            correct: 1,
+            feedback: "Malware is malicious software, such as viruses or ransomware, designed to damage or gain unauthorized access to systems."
+          },
+          {
+            question: "What does a VPN do?",
+            options: ["Blocks all internet access", "Encrypts your internet connection", "Speeds up your internet", "Disables antivirus software"],
+            correct: 1,
+            feedback: "A VPN (Virtual Private Network) encrypts your internet connection, enhancing privacy and security on public networks."
+          },
+          {
+            question: "What is two-factor authentication?",
+            options: ["Using two different passwords", "Verifying identity with two methods", "Installing two antivirus programs", "Encrypting data twice"],
+            correct: 1,
+            feedback: "Two-factor authentication (2FA) requires two forms of verification, like a password and a code sent to your phone, for added security."
+          }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        let timeLeft = 15;
+        let timerInterval;
+        const totalQuestions = questions.length;
+        let leaderboard = [];
+        
+        // Game functions
+        function playSound(type) {
+              try {
+                const audio = new AudioContext();
+                const oscillator = audio.createOscillator();
+                oscillator.type = type === 'correct' ? 'sine' : 'square';
+                oscillator.frequency.setValueAtTime(type === 'correct' ? 800 : 400, audio.currentTime);
+                oscillator.connect(audio.destination);
+                oscillator.start();
+                setTimeout(() => oscillator.stop(), 200);
+              } catch (e) {
+                console.warn('Audio playback failed:', e.message);
+              }
+            }
+
+            function startTimer() {
+              clearInterval(timerInterval);
+              timeLeft = 15;
+              const timerValueEl = document.getElementById('timer-value');
+              if (timerValueEl) {
+                timerValueEl.innerText = timeLeft;
+              } else {
+                console.error('DOM element not found: timer-value');
+              }
+              timerInterval = setInterval(() => {
+                timeLeft--;
+                if (timerValueEl) {
+                  timerValueEl.innerText = timeLeft;
+                } else {
+                  console.error('DOM element not found: timer-value');
+                }
+                if (timeLeft <= 0) {
+                  clearInterval(timerInterval);
+                  selectOption(-1);
+                }
+              }, 1000);
+            }
+
+            function loadQuestion() {
+              // Clear any existing timer to prevent multiple timers running
+              clearInterval(timerInterval);
+              
+              const requiredElements = {
+                quizContainer: document.getElementById('quiz-container'),
+                questionEl: document.getElementById('question'),
+                optionsEl: document.getElementById('options'),
+                feedbackEl: document.getElementById('feedback'),
+                nextButton: document.getElementById('next-button')?.querySelector('button'),
+                resultsEl: document.getElementById('results'),
+                progressFill: document.getElementById('progress-fill'),
+                scoreEl: document.getElementById('score-value'),
+                questionNumberEl: document.getElementById('question-number'),
+                totalQuestionsEl: document.getElementById('total-questions'),
+                timerValueEl: document.getElementById('timer-value')
+              };
+
+              for (const [key, element] of Object.entries(requiredElements)) {
+                if (!element && key !== 'nextButton') {
+                  console.error(`DOM element not found: ${key}`);
+                  return;
+                }
+              }
+
+              if (currentQuestion >= totalQuestions) {
+                clearInterval(timerInterval);
+                requiredElements.quizContainer.style.display = 'none';
+                requiredElements.resultsEl.style.display = 'block';
+                const resultsTextEl = document.getElementById('results-text');
+                if (resultsTextEl) {
+                  resultsTextEl.innerText = `Your Score: ${score}/${totalQuestions * 15} (${Math.round((score / (totalQuestions * 15)) * 100)}%)`;
+                } else {
+                  console.error('DOM element not found: results-text');
+                }
+                updateLeaderboard();
+                return;
+              }
+
+              requiredElements.questionNumberEl.innerText = currentQuestion + 1;
+              requiredElements.totalQuestionsEl.innerText = totalQuestions;
+              requiredElements.scoreEl.innerText = score;
+              requiredElements.progressFill.style.width = `${((currentQuestion + 1) / totalQuestions) * 100}%`;
+              requiredElements.questionEl.innerText = questions[currentQuestion].question;
+              requiredElements.questionEl.style.opacity = '0';
+              setTimeout(() => {
+                if (requiredElements.questionEl) requiredElements.questionEl.style.opacity = '1';
+              }, 100);
+              requiredElements.optionsEl.innerHTML = '';
+              requiredElements.feedbackEl.innerText = '';
+              if (requiredElements.nextButton) {
+                requiredElements.nextButton.style.display = 'none';
+                requiredElements.nextButton.style.opacity = '0';
+              }
+              startTimer();
+
+              questions[currentQuestion].options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.style.cssText = 'background-color:#f3f4f6;color:#374151;padding:12px;border:1px solid #d1d5db;border-radius:4px;font-size:16px;cursor:pointer;text-align:left;transition:transform 0.2s ease, background-color 0.2s ease;';
+                button.onmouseover = () => button.style.transform = 'scale(1.05)';
+                button.onmouseout = () => button.style.transform = 'scale(1)';
+                button.onclick = () => selectOption(index);
+                requiredElements.optionsEl.appendChild(button);
+              });
+            }
+
+            function selectOption(index) {
+              clearInterval(timerInterval);
+              const feedbackEl = document.getElementById('feedback');
+              const nextButton = document.getElementById('next-button')?.querySelector('button');
+              const optionsButtons = document.getElementById('options')?.querySelectorAll('button');
+              const scoreEl = document.getElementById('score-value');
+
+              if (!feedbackEl || !optionsButtons || !scoreEl) {
+                console.error('Required DOM elements not found in selectOption:', {
+                  feedbackEl: !!feedbackEl,
+                  optionsButtons: !!optionsButtons,
+                  scoreEl: !!scoreEl
+                });
+                return;
+              }
+
+              optionsButtons.forEach((button, i) => {
+                button.disabled = true;
+                button.style.transform = 'scale(1)';
+                if (i === questions[currentQuestion].correct) {
+                  button.style.backgroundColor = '#10b981';
+                  button.style.color = '#ffffff';
+                } else if (i === index && index !== -1) {
+                  button.style.backgroundColor = '#ef4444';
+                  button.style.color = '#ffffff';
+                }
+              });
+
+              if (index === questions[currentQuestion].correct) {
+                score += timeLeft;
+                scoreEl.innerText = score;
+                feedbackEl.style.color = '#10b981';
+                feedbackEl.innerText = 'Correct! ' + questions[currentQuestion].feedback;
+                playSound('correct');
+              } else {
+                feedbackEl.style.color = '#ef4444';
+                feedbackEl.innerText = index === -1 ? 'Time’s up! ' + questions[currentQuestion].feedback : 'Incorrect. ' + questions[currentQuestion].feedback;
+                playSound('incorrect');
+              }
+
+              if (nextButton) {
+                nextButton.style.display = 'block';
+                setTimeout(() => {
+                  if (nextButton) nextButton.style.opacity = '1';
+                }, 100);
+              }
+            }
+
+            function saveScore() {
+              const playerNameEl = document.getElementById('player-name');
+              const resultsTextEl = document.getElementById('results-text');
+              if (!playerNameEl || !resultsTextEl) {
+                console.error('Required DOM elements not found in saveScore:', {
+                  playerNameEl: !!playerNameEl,
+                  resultsTextEl: !!resultsTextEl
+                });
+                return;
+              }
+              
+              const playerName = playerNameEl.value.trim();
+              if (!playerName) {
+                alert('Please enter your name to save your score');
+                return;
+              }
+              
+              try {
+                // Check if player already exists in leaderboard
+                const existingPlayerIndex = leaderboard.findIndex(entry => entry.name.toLowerCase() === playerName.toLowerCase());
+                
+                if (existingPlayerIndex !== -1) {
+                  // Update score if higher than previous
+                  if (score > leaderboard[existingPlayerIndex].score) {
+                    leaderboard[existingPlayerIndex].score = score;
+                  }
+                } else {
+                  // Add new player
+                  leaderboard.push({ name: playerName, score });
+                }
+                
+                // Sort and keep top 5
+                leaderboard.sort((a, b) => b.score - a.score);
+                if (leaderboard.length > 5) {
+                  leaderboard.length = 5;
+                }
+                
+                localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+                updateLeaderboard();
+                playerNameEl.value = '';
+                alert('Score saved successfully!');
+              } catch (error) {
+                console.error('Error saving score:', error);
+                alert('Failed to save score. Please try again.');
+              }
+            }
+
+            function updateLeaderboard() {
+              const leaderboardList = document.getElementById('leaderboard-list');
+              if (!leaderboardList) {
+                console.error('DOM element not found: leaderboard-list');
+                return;
+              }
+              
+              try {
+                // Ensure leaderboard is properly sorted
+                const sortedLeaderboard = [...leaderboard].sort((a, b) => b.score - a.score);
+                
+                // Clear existing content
+                leaderboardList.innerHTML = '';
+                
+                if (sortedLeaderboard.length === 0) {
+                  const li = document.createElement('li');
+                  li.textContent = 'No scores yet. Be the first!';
+                  li.style.fontStyle = 'italic';
+                  leaderboardList.appendChild(li);
+                  return;
+                }
+                
+                // Add each entry with proper formatting
+                sortedLeaderboard.forEach((entry, index) => {
+                  const li = document.createElement('li');
+                  li.style.padding = '8px 0';
+                  li.style.borderBottom = '1px solid #e5e7eb';
+                  li.style.display = 'flex';
+                  li.style.justifyContent = 'space-between';
+                  
+                  const nameSpan = document.createElement('span');
+                  nameSpan.textContent = `${index + 1}. ${entry.name}`;
+                  
+                  const scoreSpan = document.createElement('span');
+                  scoreSpan.textContent = `${entry.score} pts`;
+                  scoreSpan.style.fontWeight = 'bold';
+                  
+                  li.appendChild(nameSpan);
+                  li.appendChild(scoreSpan);
+                  leaderboardList.appendChild(li);
+                });
+              } catch (error) {
+                console.error('Error updating leaderboard:', error);
+                leaderboardList.innerHTML = '<li>Error loading leaderboard</li>';
+              }
+            }
+
+            function nextQuestion() {
+              currentQuestion++;
+              loadQuestion();
+            }
+
+            function restartQuiz() {
+              // Reset quiz state
+              currentQuestion = 0;
+              score = 0;
+              timeLeft = 15;
+              
+              // Clear any existing timers
+              clearInterval(timerInterval);
+              
+              // Reset UI elements
+              const quizContainer = document.getElementById('quiz-container');
+              const resultsEl = document.getElementById('results');
+              const feedbackEl = document.getElementById('feedback');
+              const nextButton = document.getElementById('next-button')?.querySelector('button');
+              
+              if (quizContainer && resultsEl) {
+                // Reset all button states
+                const buttons = document.querySelectorAll('#options button');
+                buttons.forEach(button => {
+                  button.disabled = false;
+                  button.style.backgroundColor = '#f3f4f6';
+                  button.style.color = '#374151';
+                });
+                
+                // Reset feedback and next button
+                if (feedbackEl) feedbackEl.textContent = '';
+                if (nextButton) {
+                  nextButton.style.display = 'none';
+                  nextButton.style.opacity = '0';
+                }
+                
+                // Show quiz and hide results
+                quizContainer.style.display = 'block';
+                resultsEl.style.display = 'none';
+                
+                // Start the quiz again
+                loadQuestion();
+              } else {
+                console.error('Required DOM elements not found in restartQuiz:', {
+                  quizContainer: !!quizContainer,
+                  resultsEl: !!resultsEl
+                });
+              }
+            }
+
+            // Initialize the quiz when the page loads
+            window.addEventListener('load', () => {
+              const totalQuestionsEl = document.getElementById('total-questions');
+              const questionNumberEl = document.getElementById('question-number');
+              
+              if (totalQuestionsEl && questionNumberEl) {
+                totalQuestionsEl.innerText = totalQuestions;
+                questionNumberEl.innerText = '1';
+                // Add a small delay to ensure all elements are fully loaded
+                setTimeout(() => {
+                  loadQuestion();
+                  updateLeaderboard();
+                }, 100);
+              } else {
+                console.error('Required DOM elements not found on load:', {
+                  totalQuestionsEl: !!totalQuestionsEl,
+                  questionNumberEl: !!questionNumberEl
+                });
+              }
+            });
+
+        // Initialize quiz when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Load leaderboard from localStorage
+                const savedLeaderboard = localStorage.getItem('leaderboard');
+                leaderboard = savedLeaderboard ? JSON.parse(savedLeaderboard) : [];
+                
+                // Set up the quiz
+                document.getElementById('total-questions').textContent = totalQuestions;
+                document.getElementById('question-number').textContent = '1';
+                
+                // Make sure the quiz container is visible
+                const quizContainer = document.getElementById('quiz-container');
+                if (quizContainer) {
+                    quizContainer.style.display = 'block';
+                }
+                
+                // Start the quiz
+                loadQuestion();
+                updateLeaderboard();
+                
+            } catch (error) {
+                console.error('Error initializing quiz:', error);
+                const container = document.getElementById('quiz-container');
+                if (container) {
+                    container.innerHTML = '<div style="color: red; padding: 20px; text-align: center;">Error loading quiz. Please refresh the page to try again.</div>';
+                }
+            }
+        });
+      </script>
+      <!-- /wp:html -->
+    </div>
+    <!-- /wp:group -->
+
+    <!-- Call-to-Action Section -->
+    <!-- wp:cover {"url":"https://gamifiedcybertraining.wordpress.com/wp-content/uploads/2025/07/standard-quality-control-concept-m.jpg?w=1024","id":33,"dimRatio":70,"overlayColor":"custom","customOverlayColor":"#393840","focalPoint":{"x":0.5,"y":0},"minHeight":460,"minHeightUnit":"px","sizeSlug":"large","align":"full","style":{"color":{"background":"linear-gradient(135deg, #1e3a8a, #3b82f6)"}}} -->
+    <div class="wp-block-cover alignfull has-background" style="background:linear-gradient(135deg, #1e3a8a, #3b82f6);min-height:460px">
+      <span aria-hidden="true" class="wp-block-cover__background has-custom-background-color has-background-dim-70 has-background-dim" style="background-color:#393840"></span>
+      <img class="wp-block-cover__image-background wp-image-33 size-large" alt="CTA Background" src="https://gamifiedcybertraining.wordpress.com/wp-content/uploads/2025/07/standard-quality-control-concept-m.jpg?w=1024" style="object-position:50% 0%" data-object-fit="cover" data-object-position="50% 0%"/>
+      <div class="wp-block-cover__inner-container">
+        <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"40px","bottom":"40px"}}}} -->
+        <div class="wp-block-group alignwide" style="padding-top:40px;padding-bottom:40px">
+          <!-- wp:heading {"textAlign":"center","style":{"typography":{"fontSize":"32px"},"color":{"text":"#ffffff"}}} -->
+          <h2 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff;font-size:32px">Continue Your Cybersecurity Journey</h2>
+          <!-- /wp:heading -->
+          <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"16px"},"color":{"text":"#ffffff"}}} -->
+          <p class="has-text-align-center has-text-color" style="color:#ffffff;font-size:16px">Explore more training modules to enhance your cybersecurity skills.</p>
+          <!-- /wp:paragraph -->
+          <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+          <div class="wp-block-buttons">
+            <!-- wp:button {"style":{"color":{"background":"#3b82f6","text":"#ffffff"},"border":{"radius":"4px"},"spacing":{"padding":{"top":"12px","right":"24px","bottom":"12px","left":"24px"}}}} -->
+            <div class="wp-block-button"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="/start-training" style="border-radius:4px;color:#ffffff;background-color:#3b82f6;padding-top:12px;padding-right:24px;padding-bottom:12px;padding-left:24px">Explore More</a></div>
+            <!-- /wp:button -->
+          </div>
+          <!-- /wp:buttons -->
+        </div>
+        <!-- /wp:group -->
+      </div>
+    </div>
+    <!-- /wp:cover -->
+
+    <!-- wp:template-part {"slug":"footer","theme":"pub/retrospect"} /-->
+  </div>
+  <!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+</body>
+</html>
